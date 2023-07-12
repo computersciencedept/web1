@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import include, path
 #new
 from django.contrib.auth import views as auth_views
+import debug_toolbar
+from django.conf import settings
 
 urlpatterns = [
     path("csc108/",include("csc108.urls")),
@@ -25,6 +27,7 @@ urlpatterns = [
     path("", include('users.urls')),
     path("", include('csc108.urls')),
     path("",include('faculty.urls')),
-    #path('login', views.custom_login, name='login'),
-    #path('logout', views.custom_logout, name='logout'),
+    path("",include('registrar.urls')),
+    path("",include('students.urls')),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]

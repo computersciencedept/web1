@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser
+from .models import CustomUser,classroom
 
 
 from django.contrib import admin
@@ -26,5 +26,11 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser,CustomUserAdmin)
+class classroomAdmin(admin.ModelAdmin):
+
+    model = classroom
+    list_display  = [f.name for f in classroom._meta.fields]
+
+admin.site.register(classroom,classroomAdmin)
 
 # Register your models here.

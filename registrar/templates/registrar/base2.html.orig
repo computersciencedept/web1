@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+   <meta charset="utf-8" >
+   <title>Colllege main web page</title>
+   <link rel="stylesheet" type="text/css" href="{% static 'csc108/bootstrap-5.3.0-dist/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'registrar/navbar.css' %}">
+
+
+ </head>
+ <body>
+	 <main>
+	 <div style="width: 100%; white-space: nowrap; overflow-x: scroll;overflow-y: scroll;">
+		   {% include 'csc108/includes/messaging.html' %}
+		   {% block content %}
+            {% endblock %}
+
+	    </div>
+   </main>
+
+<!-- Optional Javascript -->
+      <script src="{% static 'csc108/jquery3.7.0/jquery-3.7.0.min.js' %}"></script>
+      <script src="{% static 'csc108/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js' %}" ></script>
+      <script src="{% static 'registrar/navbar.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+window.setTimeout(function() {
+  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();
+  });
+}, 5000);
+});
+
+    $(function () {
+        $("li a").on("click", function () {
+            var url = $(this).attr("href");
+            $("[id*=dvDisplay]").html('<iframe class="row-container" frameborder="1" src="' + url + '" />');
+            return false;
+        });
+    });
+
+
+</script>
+
+   
+ </body>
+</html>
+

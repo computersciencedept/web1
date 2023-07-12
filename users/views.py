@@ -24,8 +24,16 @@ def custom_login(request):
                 messages.success(request, f"Hello {user.username}! You have been logged in")
                 queryset = CustomUser.objects.filter(username=form.cleaned_data['username']).values('status')
                 user_type = queryset[0]['status']
+                request.session['role'] = user_type
+                #print(user_type)
                 if(user_type == 'faculty'):
+                     
                      return redirect('faculty')
+                elif(user_type == 'admin'):
+                    return redirect('registrar')
+                elif(user_type == 'student'):
+                    return redirect('students')
+
                 else:
                      return redirect('/')
 
@@ -48,3 +56,4 @@ def custom_logout(request):
     messages.info(request, "Logged out successfully!")
     return redirect("/")
 # Create your views here.
+

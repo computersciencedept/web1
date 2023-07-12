@@ -51,6 +51,12 @@ INSTALLED_APPS = [
     'csc108',
     'users',
     'faculty',
+    'registrar',
+    'students',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "debug_toolbar",
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'mywebsite.urls'
@@ -145,4 +152,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'users.CUstomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
